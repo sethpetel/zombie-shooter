@@ -1,3 +1,4 @@
+
 let zombieImgs = [
 img`
     ...cccccccccccccc...
@@ -304,7 +305,15 @@ img`
 ]
 scene.setBackgroundColor(7)
 tiles.setTilemap(tilemap`level_1`)
+let waveNumber = 1
+let zombieCounter = 0
 
+function zombieSpawn(zombies: any[]){
+    for(let i = 0; i < zombies.length; i++){
+        let tempImg = zombies.get(i)
+        for (let j = 0; j < waveNumber; j++){
+            
+        }
+    }
+}
 
-
-// hello 
