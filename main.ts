@@ -303,6 +303,81 @@ img`
     .....ccc.....e......
     `
 ]
+let gunLeft = img`
+    . . . . . . . . f f f f f . . .
+    . . . . . . f f f f f f f f f .
+    . . . . . f f f c f f f f f f .
+    . . . . . f f c f f f c f f f f
+    . . . f f c c f f f c c f f c f
+    . . . f f f f f e f f f f c c f
+    . . . . f f f e e f f f f f f f
+    . . . . . f f e e f b f e e f f
+    . . . . . . f 4 4 f 1 e 4 e f .
+    . f f f f f . 4 4 4 4 e f f f .
+    . f f f b b e f e e e e e f . .
+    . . . f 4 b 4 7 7 7 e 4 4 e . .
+    . . . . f f e 7 7 7 e 4 4 e . .
+    . . . . . . . 6 6 6 f e e f . .
+    . . . . . . . f f f f f f . . .
+    . . . . . . . . . f f f . . . .
+`
+let gunShootLeft = img`
+    . . . . . . . . f f f f f . . .
+    . . . . . . f f f f f f f f f .
+    . . . . . f f f c f f f f f f .
+    . . . . . f f c f f f c f f f f
+    . . . f f c c f f f c c f f c f
+    . . . f f f f f e f f f f c c f
+    . . . . f f f e e f f f f f f f
+    . . . . . f f e e f b f e e f f
+    4 . . . . . f 4 4 f 1 e 4 e f .
+    5 f f f f f . 4 4 4 4 e f f f .
+    5 f f f b b e f e e e e e f . .
+    4 . . f 4 b 4 7 7 7 e 4 4 e . .
+    . . . . f f e 7 7 7 e 4 4 e . .
+    . . . . . . . 6 6 6 f e e f . .
+    . . . . . . . f f f f f f . . .
+    . . . . . . . . . f f f . . . .
+`
+
+//Finish these
+
+let gunRight = img`
+    . . . . . . . . f f f f f . . .
+    . . . . . . f f f f f f f f f .
+    . . . . . f f f c f f f f f f .
+    . . . . . f f c f f f c f f f f
+    . . . f f c c f f f c c f f c f
+    . . . f f f f f e f f f f c c f
+    . . . . f f f e e f f f f f f f
+    . . . . . f f e e f b f e e f f
+    . . . . . . f 4 4 f 1 e 4 e f .
+    . f f f f f . 4 4 4 4 e f f f .
+    . f f f b b e f e e e e e f . .
+    . . . f 4 b 4 7 7 7 e 4 4 e . .
+    . . . . f f e 7 7 7 e 4 4 e . .
+    . . . . . . . 6 6 6 f e e f . .
+    . . . . . . . f f f f f f . . .
+    . . . . . . . . . f f f . . . .
+`
+let gunShootRight = img`
+    . . . . . . . . f f f f f . . .
+    . . . . . . f f f f f f f f f .
+    . . . . . f f f c f f f f f f .
+    . . . . . f f c f f f c f f f f
+    . . . f f c c f f f c c f f c f
+    . . . f f f f f e f f f f c c f
+    . . . . f f f e e f f f f f f f
+    . . . . . f f e e f b f e e f f
+    4 . . . . . f 4 4 f 1 e 4 e f .
+    5 f f f f f . 4 4 4 4 e f f f .
+    5 f f f b b e f e e e e e f . .
+    4 . . f 4 b 4 7 7 7 e 4 4 e . .
+    . . . . f f e 7 7 7 e 4 4 e . .
+    . . . . . . . 6 6 6 f e e f . .
+    . . . . . . . f f f f f f . . .
+    . . . . . . . . . f f f . . . .
+`
 let mySprite2 = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
@@ -337,4 +412,5 @@ function zombieSpawn(zombies: any[]){
 if (zombieCounter == 0) {
     zombieSpawn( zombieImgs )
 }
+
 // lava, waves, projectile weapon aka guns, walls, win condition, health bar on player and zombies, make it multiplayer
