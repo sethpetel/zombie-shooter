@@ -1,3 +1,6 @@
+/**
+ * lava, waves, projectile weapon aka guns, walls, win condition, health bar on player and zombies, make it multiplayer
+ */
 let zombieCounter = 0
 let zombieImgs = [
 img`
@@ -303,101 +306,57 @@ img`
     .....ccc.....e......
     `
 ]
+let bulletLeft = img`
+    . . . . 
+    f f 2 2 
+    f f f 2 
+    . . . . 
+    `
+let bulletRight = bulletLeft.clone()
+bulletRight.flipX()
 let gunLeft = img`
-    . . . . . . . . f f f f f . . .
-    . . . . . . f f f f f f f f f .
-    . . . . . f f f c f f f f f f .
-    . . . . . f f c f f f c f f f f
-    . . . f f c c f f f c c f f c f
-    . . . f f f f f e f f f f c c f
-    . . . . f f f e e f f f f f f f
-    . . . . . f f e e f b f e e f f
-    . . . . . . f 4 4 f 1 e 4 e f .
-    . f f f f f . 4 4 4 4 e f f f .
-    . f f f b b e f e e e e e f . .
-    . . . f 4 b 4 7 7 7 e 4 4 e . .
-    . . . . f f e 7 7 7 e 4 4 e . .
-    . . . . . . . 6 6 6 f e e f . .
-    . . . . . . . f f f f f f . . .
-    . . . . . . . . . f f f . . . .
-`
+    . . . . . . . . f f f f f . . . 
+    . . . . . . f f f f f f f f f . 
+    . . . . . f f f c f f f f f f . 
+    . . . . . f f c f f f c f f f f 
+    . . . f f c c f f f c c f f c f 
+    . . . f f f f f e f f f f c c f 
+    . . . . f f f e e f f f f f f f 
+    . . . . . f f e e f b f e e f f 
+    . . . . . . f 4 4 f 1 e 4 e f . 
+    . f f f f f . 4 4 4 4 e f f f . 
+    . f f f b b e f e e e e e f . . 
+    . . . f 4 b 4 7 7 7 e 4 4 e . . 
+    . . . . f f e 7 7 7 e 4 4 e . . 
+    . . . . . . . 6 6 6 f e e f . . 
+    . . . . . . . f f f f f f . . . 
+    . . . . . . . . . f f f . . . . 
+    `
 let gunShootLeft = img`
-    . . . . . . . . f f f f f . . .
-    . . . . . . f f f f f f f f f .
-    . . . . . f f f c f f f f f f .
-    . . . . . f f c f f f c f f f f
-    . . . f f c c f f f c c f f c f
-    . . . f f f f f e f f f f c c f
-    . . . . f f f e e f f f f f f f
-    . . . . . f f e e f b f e e f f
-    4 . . . . . f 4 4 f 1 e 4 e f .
-    5 f f f f f . 4 4 4 4 e f f f .
-    5 f f f b b e f e e e e e f . .
-    4 . . f 4 b 4 7 7 7 e 4 4 e . .
-    . . . . f f e 7 7 7 e 4 4 e . .
-    . . . . . . . 6 6 6 f e e f . .
-    . . . . . . . f f f f f f . . .
-    . . . . . . . . . f f f . . . .
-`
-
-//Finish these
-
-let gunRight = img`
-    . . . . . . . . f f f f f . . .
-    . . . . . . f f f f f f f f f .
-    . . . . . f f f c f f f f f f .
-    . . . . . f f c f f f c f f f f
-    . . . f f c c f f f c c f f c f
-    . . . f f f f f e f f f f c c f
-    . . . . f f f e e f f f f f f f
-    . . . . . f f e e f b f e e f f
-    . . . . . . f 4 4 f 1 e 4 e f .
-    . f f f f f . 4 4 4 4 e f f f .
-    . f f f b b e f e e e e e f . .
-    . . . f 4 b 4 7 7 7 e 4 4 e . .
-    . . . . f f e 7 7 7 e 4 4 e . .
-    . . . . . . . 6 6 6 f e e f . .
-    . . . . . . . f f f f f f . . .
-    . . . . . . . . . f f f . . . .
-`
-let gunShootRight = img`
-    . . . . . . . . f f f f f . . .
-    . . . . . . f f f f f f f f f .
-    . . . . . f f f c f f f f f f .
-    . . . . . f f c f f f c f f f f
-    . . . f f c c f f f c c f f c f
-    . . . f f f f f e f f f f c c f
-    . . . . f f f e e f f f f f f f
-    . . . . . f f e e f b f e e f f
-    4 . . . . . f 4 4 f 1 e 4 e f .
-    5 f f f f f . 4 4 4 4 e f f f .
-    5 f f f b b e f e e e e e f . .
-    4 . . f 4 b 4 7 7 7 e 4 4 e . .
-    . . . . f f e 7 7 7 e 4 4 e . .
-    . . . . . . . 6 6 6 f e e f . .
-    . . . . . . . f f f f f f . . .
-    . . . . . . . . . f f f . . . .
-`
-let mySprite2 = sprites.create(img`
-    . . . . . . f f f f . . . . . . 
-    . . . . f f f 2 2 f f f . . . . 
-    . . . f f f 2 2 2 2 f f f . . . 
-    . . f f f e e e e e e f f f . . 
-    . . f f e 2 2 2 2 2 2 e e f . . 
-    . . f e 2 f f f f f f 2 e f . . 
-    . . f f f f e e e e f f f f . . 
-    . f f e f b f 4 4 f b f e f f . 
-    . f e e 4 1 f d d f 1 4 e e f . 
-    . . f e e d d d d d d e e f . . 
-    . . . f e e 4 4 4 4 e e f . . . 
-    . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-    . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-    . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
-    . . . . . f f f f f f . . . . . 
-    . . . . . f f . . f f . . . . . 
-    `, 0)
-controller.moveSprite(mySprite2)
-scene.cameraFollowSprite(mySprite2)
+    . . . . . . . . f f f f f . . . 
+    . . . . . . f f f f f f f f f . 
+    . . . . . f f f c f f f f f f . 
+    . . . . . f f c f f f c f f f f 
+    . . . f f c c f f f c c f f c f 
+    . . . f f f f f e f f f f c c f 
+    . . . . f f f e e f f f f f f f 
+    . . . . . f f e e f b f e e f f 
+    4 . . . . . f 4 4 f 1 e 4 e f . 
+    5 f f f f f . 4 4 4 4 e f f f . 
+    5 f f f b b e f e e e e e f . . 
+    4 . . f 4 b 4 7 7 7 e 4 4 e . . 
+    . . . . f f e 7 7 7 e 4 4 e . . 
+    . . . . . . . 6 6 6 f e e f . . 
+    . . . . . . . f f f f f f . . . 
+    . . . . . . . . . f f f . . . . 
+    `
+let gunRight = gunLeft.clone()
+gunRight.flipX()
+let gunShootRight = gunShootLeft.clone()
+gunShootRight.flipX()
+let player = sprites.create(gunRight, SpriteKind.Player)
+controller.moveSprite(player, 100)
+scene.cameraFollowSprite(player)
 scene.setBackgroundColor(15)
 tiles.setTilemap(tilemap`level_1`)
 let waveNumber = 1
@@ -405,12 +364,18 @@ function zombieSpawn(zombies: any[]){
     for(let i = 0; i < zombies.length; i++){
         let tempImg = zombies.get(i)
         for (let j = 0; j < waveNumber; j++){
-           tiles.placeOnRandomTile( sprites.create(tempImg , SpriteKind.Enemy),  sprites.dungeon.floorMixed)
+            let tempZombie = sprites.create(tempImg , SpriteKind.Enemy)
+            tempZombie.follow(player, 35)
+           tiles.placeOnRandomTile(tempZombie,  sprites.dungeon.floorMixed)
+           
         }
     }
 }
 if (zombieCounter == 0) {
     zombieSpawn( zombieImgs )
 }
-
-// lava, waves, projectile weapon aka guns, walls, win condition, health bar on player and zombies, make it multiplayer
+if (player.vx > 0) {
+    player.setImage(gunLeft)
+} else {
+    player.setImage(gunRight)
+}
